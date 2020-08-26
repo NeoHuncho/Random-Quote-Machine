@@ -1,0 +1,15 @@
+#quote-machine{
+
+}
+.title{
+    text-justify: center;
+    text-align: center;
+    font-size: 3vw;
+    margin: 0vw 0vw 2vw 0vw;
+}
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

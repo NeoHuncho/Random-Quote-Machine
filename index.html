@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Random-quote-machine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="quote-box">
-        <h1 id="text">Here will be the quote</h1>
-        <h2 id="author"></h2>
-        <button id="new-quote"></button>
-        <a id="tweet-quote"></a>
-    </div>
+    <section id="quote-machine" class="centered">
+        <div id="title">
+           <h1 class="title">Random Quote Machine</h1> 
+        </div>
+        <div id="quote-box" class="card">
+            <p class="card-text" id="text">Here will be the quote</p>
+            <h2 class="card-title" id="author"></h2>
+            <button type="button" id="new-quote" class="btn btn-primary">Next quote</button>
+            <a id="tweet-quote"></a>
+        </div>
 </body>
+    </section>
 </html>
