@@ -3,18 +3,6 @@ const chooseQuote= randomQuotes[(Math.floor(Math.random() * randomQuotes.length)
 function quote(){
     $("#text").html(chooseQuote);
 }
-$(document).ready(function() { 
- 
-    $('#new-quote').click(function () { 
-       quote()
-        
-    });
-        
-    });
-           
-   
-        
-
 
 
 
