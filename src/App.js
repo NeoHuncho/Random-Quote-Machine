@@ -9,23 +9,21 @@ const API= 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.getRandomIndexColor=this.getRandomIndexColor.bind(this);
-     this.state={
-      color:undefined,
-          quotes:[],
+         this.state={
+      color:['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"],
+        quotes:[],
         index:0,
-        indexColor:0,
-        colors:['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"]
+        colorIndex:0
       }
     }
     componentDidMount(){
       fetch(API).then(res=> res.json()).then(res=>{this.setState({quotes:res.quotes}, this.getRandomIndex);
-      this.getRandomIndex();
+        this.getRandomColorIndex();
     });
    
     }
-    getRandomIndex() {
-      const{quotes}=this.state;
+    getRandomIndex= () =>{
+      const {quotes}= this.state;
       if(quotes.length>0){
         const index= Math.floor(Math.random()*quotes.length);
         this.setState({
@@ -33,25 +31,29 @@ class App extends React.Component {
         })
       }
      }
-    getRandomIndexColor= ()=> {
-    const{colors}=this.state;
-      const {indexColor}=this.state;
-      const index= Math.floor(Math.random() * colors.length);
-      this.setState({
-        indexColor
-      })}
-      ;
-    
+     getRandomColorIndex= () =>{
+      const {color}= this.state;
+      if(color.length>0){
+        const index2= Math.floor(Math.random()*color.length);
+        this.setState({
+          colorIndex:index2
+        })
+      }
+     }
      
     
 render(){
-const{quotes, index,indexColor,colors}= this.state;
+const{quotes, index,colorIndex,color}= this.state;
 const quote= quotes[index];
-const color=colors[indexColor]
-  console.log(colors);
-  console.log(color);
+const colorChoosen=color[colorIndex];
+const styleObj={
+  background:colorChoosen
+}
+console.log(colorChoosen)
 return (
-  <body>
+ 
+  <body style={styleObj} className="container">
+    
     <style>{'body { background-color: color; }'}</style>
   <section id="quote-machine" className="centered">
       <div id="title">
@@ -62,7 +64,7 @@ return (
         {quote && <h2 className="card-title" id="author">{quote.author}</h2>}
       </div>
       <div className="d-flex justify-content-between">
-        <button  type="button" id="new-quote" onClick={this.getRandomIndex} className="btn btn-primary">Next quote</button>      
+        <button  type="button" id="new-quote" onClick={() => { this.getRandomIndex(); this.getRandomColorIndex()}} className="btn btn-primary">Next quote</button>      
          <button className="btn btn-primary" id="tweet-quote">Tweet</button> 
        </div>
         

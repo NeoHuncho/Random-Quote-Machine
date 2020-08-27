@@ -4,7 +4,7 @@
   text-align: center;
   font-size: 3vw;
   margin: 0vw 0vw 2vw 0vw;
-}
+ }
 .centered {
   position: fixed;
   top: 50%;
@@ -20,4 +20,9 @@
 
   text-align: center;
   
+}
+.container{
+ min-width:100%;
+ min-height: 100%;
+ position: fixed;
 }
