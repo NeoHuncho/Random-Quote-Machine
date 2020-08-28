@@ -5,7 +5,6 @@ import Button from 'react-bootstrap';
 import Grid from '@material-ui/core/Grid';
 import { render } from '@testing-library/react';
 import {SocialMediaIconsReact} from 'social-media-icons-react';
-import {faTwitter} from '@fortawesome/free-solid-svg-icons';
 const colors= ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 const API= 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
 const filler ={
@@ -14,11 +13,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
          this.state={
-      color:colors,
+     
+        color:colors,
         quotes:[filler],//this was added so that the twitter url does not give us error that quotes is null
         index:0,
         colorIndex:0
       }
+    }
+    toogleAppear=()=>{
+      this.setState({
+        appearCard: !this.state.appearCard
+      })
     }
     componentDidMount(){
       fetch(API).then(res=> res.json()).then(res=>{this.setState({quotes:res.quotes}, this.getRandomIndex);
@@ -31,7 +36,7 @@ class App extends React.Component {
       if(quotes.length>0){
         const index= Math.floor(Math.random()*quotes.length);
         this.setState({
-          index
+          index:index
         })
       }
      }
@@ -47,7 +52,7 @@ class App extends React.Component {
      
     
 render(){
-  const{quotes, index,colorIndex,color}= this.state;
+  const{quotes, index,colorIndex,color,appearCard}= this.state;
   const quote= quotes[index];
   const colorChoosen=color[colorIndex];
   const styleObj={
@@ -58,18 +63,19 @@ return (
  
   <body style={styleObj} className="container">
     <div className="blockquote-wrapper"id="quote-box">
+    
      <section id="quote-machine" className="centered">
       <div id="title">
          <h1 className="title">Random Quote Machine</h1> 
       </div>
-     
         {quote && <p className="card-text" id="text">{quote.quote}</p>}
         {quote && <h2 className="card-title" id="author">{quote.author}</h2>}
         <div className="d-flex justify-content-between" id="buttons">
-        <button  type="button" id="new-quote" onClick={() => { this.getRandomIndex(); this.getRandomColorIndex()}} className="btn btn-primary">Next quote</button>      
+<button  type="button" id="new-quote" onClick={() => { this.getRandomIndex(); this.getRandomColorIndex(); this.toogleAppear();}} className="btn btn-primary">Next quote </button>      
        <SocialMediaIconsReact url={tweetURl} id="tweet-quote" borderColor={colorChoosen} borderWidth="5" borderStyle="solid" icon="twitter" iconColor="rgba(255,255,255,1)" backgroundColor={colorChoosen} iconSize="5" roundness="20%"  size="50" />
          </div>    
-      </section>
+          </section>
+   
       </div>
 </body>
 
