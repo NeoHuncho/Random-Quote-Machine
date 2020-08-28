@@ -4,14 +4,17 @@ import './App.scss';
 import Button from 'react-bootstrap';
 import Grid from '@material-ui/core/Grid';
 import { render } from '@testing-library/react';
+import {faTwitter} from '@fortawesome/free-solid-svg-icons';
 const colors= ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 const API= 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
+const filler ={
+  "quote":"Life isn’t about getting and having, it’s about giving and being.","author":"Kevin Kruse"}
 class App extends React.Component {
   constructor(props) {
     super(props);
          this.state={
       color:colors,
-        quotes:[],
+        quotes:[filler],//this was added so that the twitter url does not give us error that quotes is null
         index:0,
         colorIndex:0
       }
@@ -43,13 +46,13 @@ class App extends React.Component {
      
     
 render(){
-const{quotes, index,colorIndex,color}= this.state;
-const quote= quotes[index];
-const colorChoosen=color[colorIndex];
-const styleObj={
-  background:colorChoosen
-}
-
+  const{quotes, index,colorIndex,color}= this.state;
+  const quote= quotes[index];
+  const colorChoosen=color[colorIndex];
+  const styleObj={
+    background:colorChoosen
+  } 
+  const tweetURl= `https://twitter.com/intent/tweet?text=${quote.quote} - ${quote.author}`;
 return (
  
   <body style={styleObj} className="container">
@@ -63,7 +66,8 @@ return (
         {quote && <h2 className="card-title" id="author">{quote.author}</h2>}
         <div className="d-flex justify-content-between" id="buttons">
         <button  type="button" id="new-quote" onClick={() => { this.getRandomIndex(); this.getRandomColorIndex()}} className="btn btn-primary">Next quote</button>      
-         <button className="btn btn-primary" id="tweet-quote">Tweet</button></div>    
+         
+         <a class="twitter-share-button" href={tweetURl} id="tweet-quote"><i class="fab fa-twitter"></i>Tweet</a></div>    
       </section>
       </div>
 </body>
