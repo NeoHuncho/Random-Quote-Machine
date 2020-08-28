@@ -3,26 +3,82 @@
   text-justify: center;
   text-align: center;
   font-size: 3vw;
-  margin: 0vw 0vw 2vw 0vw;
+  margin: 0vw 0vw 2vmin 0vw;
+  font-size:2.5vh;
+  color: white;
  }
 .centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: whitesmoke;
+    padding: 30px 0;
+    width: 100%;
+    max-width: 500px;
+    z-index: 1;
+    margin: 80px auto;
+    align-self: center;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
 }
 #tweet-quote{
   
   text-align: center;
+  font-size:2vh
   
 }
 #new-quote{
 
   text-align: center;
+  font-size:2vh
   
 }
 .container{
  min-width:100%;
  min-height: 100%;
  position: fixed;
+}
+.blockquote-wrapper {
+  display: flex;
+  height: 100vh;
+  padding: 0 20px;
+}
+
+#author{
+  
+    position: relative;
+    color:whitesmoke;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding-top: 20px;
+    z-index: 1;
+
+}
+#text{
+  position: relative;
+    color: whitesmoke;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+  }
+  #text:after{
+    position: absolute;
+    content: "”";
+    color: rgba(255, 255, 255, 1);
+    font-size: 7rem;
+    line-height: 0;
+    bottom: -43px;
+    right: 40px;
+  }
+  #buttons{
+   padding-top: 20px;
+  }
+  @media all and (min-width: 600px) {
+    .blockquote h1 {
+        font-size: 60px;
+   }
+
 }
