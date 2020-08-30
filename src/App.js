@@ -1,9 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
-import Button from 'react-bootstrap';
-import Grid from '@material-ui/core/Grid';
-import { render } from '@testing-library/react';
+import './App.css';
 import {SocialMediaIconsReact} from 'social-media-icons-react';
 const colors= ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 const API= 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
@@ -52,7 +49,7 @@ class App extends React.Component {
      
     
 render(){
-  const{quotes, index,colorIndex,color,appearCard}= this.state;
+  const{quotes, index,colorIndex,color}= this.state;
   const quote= quotes[index];
   const colorChoosen=color[colorIndex];
   const styleObj={
@@ -70,7 +67,7 @@ return (
       </div>
         {quote && <p className="card-text" id="text">{quote.quote}</p>}
         {quote && <h2 className="card-title" id="author">{quote.author}</h2>}
-        <div className="d-flex justify-content-between" id="buttons">
+         <div className="d-flex justify-content-between" id="buttons">
 <button  type="button" id="new-quote" onClick={() => { this.getRandomIndex(); this.getRandomColorIndex(); this.toogleAppear();}} className="btn btn-primary">Next quote </button>      
        <SocialMediaIconsReact url={tweetURl} id="tweet-quote" borderColor={colorChoosen} borderWidth="5" borderStyle="solid" icon="twitter" iconColor="rgba(255,255,255,1)" backgroundColor={colorChoosen} iconSize="5" roundness="20%"  size="50" />
          </div>    

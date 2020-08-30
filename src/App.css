@@ -63,6 +63,7 @@
     font-weight: 800;
     line-height: 1;
     margin: 0;
+   
   }
   #text:after{
     position: absolute;
@@ -72,28 +73,33 @@
     line-height: 0;
     bottom: -48px;
     right: 40px;
+    
   }
   #buttons{
    padding-top: 20px;
   }
-  @media all and (min-width: 600px) {
+  @media all and (min-width: 768px) {
     #text h1 {
-        font-size: 60px;
+        font-size: 50px;
    }
-.fade-appear{
-  opacity: 0;
-  z-index:  1;
-}
-   .fade-appear.fade-appear-active{
-     opacity: 1;
-     transition: opacity 300ms linear;
-   }
-.fade-enter{
-  opacity: 0;
-  z-index: 1;
-}
-.fade-appear.fade-enter-active{
-  opacity:1;
-  transition: opacity 300ms linear;
-}
-}
+  }
+   @media screen and (max-width: 768px) {
+    #text{
+      font-size: 28px;
+      margin-top: 25px;
+    } #author{
+      font-size: 18px;
+    }#text:after{
+      font-size: 60px;
+      margin-bottom: 10px;
+       }
+       #new-quote{
+         font-size:15px;
+         padding: -5px -5px;
+       }
+
+  }
+  @media screen and (max-width: 768px) {
+   
+  }
+
